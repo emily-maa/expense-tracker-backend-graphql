@@ -1,0 +1,41 @@
+type Query {
+    user(id: Int): User
+    login(
+        id: Int
+        password: String
+    ):Boolean
+}
+
+type Mutation {
+    addTransaction(
+        id: Int
+        transaction_id: Int
+        text: String
+        amount: Float
+    ): [Transaction]
+    deleteTransaction(
+        id: Int
+        transaction_id: Int
+    ): [Transaction]
+}
+
+type User {
+    status: String
+    id: Int
+    username: String
+    password: String
+    transactions: [Transaction]
+    balance: Balance
+}
+
+type Transaction{
+    transaction_id: Int
+    text: String
+    amount: Float
+}
+
+type Balance {
+    net_balance: Float
+    income: Float
+    expense: Float
+}
